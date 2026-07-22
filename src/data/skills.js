@@ -15,18 +15,18 @@ const skills = {
     { name: "Authentication", level: 82 },
   ],
 
-  database: [
-    { name: "MongoDB", level: 90 },
-    { name: "MySQL", level: 80 },
-  ],
+ database: [
+  { name: "MongoDB", level: 90 },
+  { name: "MySQL", level: 80 },
+  { name: "PostgreSQL", level: 80 },
+  { name: "Supabase", level: 82 },
+],
 
   tools: [
     { name: "Git", level: 90 },
     { name: "GitHub", level: 92 },
     { name: "VS Code", level: 95 },
     { name: "Postman", level: 88 },
-    { name: "Figma", level: 75 },
-    { name: "Vite", level: 90 },
   ],
 };
 

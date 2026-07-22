@@ -1,48 +1,86 @@
 const projects = [
   {
     id: 1,
-    title: "Event Management System",
-
+    number: "01",
+    title: "AI Shopping System",
+    category: "AI • Full Stack",
     description:
-      "A full-stack event management platform with authentication, role-based access, event registration, and admin dashboard.",
+      "An AI-powered shopping assistant that compares products, recommends the best options, and helps users make smart buying decisions.",
 
     tech: [
       "React",
       "Node.js",
       "Express",
-      "MongoDB"
+      "MongoDB",
+      "Gemini AI",
+      "Tailwind CSS",
     ],
 
-    github: "https://github.com/Bastab10/UniHubEvents",
+    image: "/projects/ai-shopping.jpg",
 
-    demo: "https://unihub.bastabsaikia.in",
+    github: "https://github.com/Bastab10",
+    demo: "#",
+
+    color: "from-violet-600 to-fuchsia-500",
   },
 
   {
     id: 2,
-    title: "Patient History System",
+    number: "02",
+    title: "Event Management System",
+    category: "Full Stack Web",
 
     description:
-      "A healthcare application for securely managing patient records, prescriptions, and medical history.",
+      "A university event management platform with role-based authentication, registrations, admin dashboard, coordinator panel, and event management.",
 
     tech: [
       "React",
       "Node.js",
       "Express",
-      "MongoDB"
+      "MongoDB",
+      "Tailwind CSS",
     ],
 
-    github: "#",
+    image: "/projects/event.png",
 
-    demo: "#",
+    github: "https://github.com/Bastab10/UniHubEvents",
+    demo: "https://unihub.bastabsaikia.in",
+
+    color: "from-purple-600 to-indigo-500",
   },
 
   {
     id: 3,
-    title: "WanderLust",
+    number: "03",
+    title: "Patient History System",
+    category: "Healthcare",
 
     description:
-      "A full-stack travel listing platform inspired by Airbnb with authentication, image uploads, maps, and reviews.",
+      "Secure healthcare platform to manage patient records, prescriptions, appointments, and complete medical history.",
+
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+    ],
+
+    image: "/projects/patient.png",
+
+    github: "#",
+    demo: "#",
+
+    color: "from-cyan-600 to-blue-500",
+  },
+
+  {
+    id: 4,
+    number: "04",
+    title: "WanderLust",
+    category: "Travel Platform",
+
+    description:
+      "Airbnb-inspired travel listing platform with authentication, reviews, image uploads, maps, and cloud storage.",
 
     tech: [
       "Node.js",
@@ -50,12 +88,39 @@ const projects = [
       "MongoDB",
       "EJS",
       "Bootstrap",
-      "Cloudinary"
+      "Cloudinary",
     ],
 
-    github: "https://github.com/Bastab10/StayVista",
+    image: "/projects/wanderlust.png",
 
-    demo: "",
+    github: "https://github.com/Bastab10/StayVista",
+    demo: "#",
+
+    color: "from-orange-500 to-pink-500",
+  },
+
+  {
+    id: 5,
+    number: "05",
+    title: "Portfolio Website",
+    category: "Frontend",
+
+    description:
+      "Modern portfolio built with React, Tailwind CSS, Framer Motion, and GSAP featuring premium animations and responsive design.",
+
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "GSAP",
+    ],
+
+    image: "/projects/portfolio.png",
+
+    github: "https://github.com/Bastab10",
+    demo: "https://bastabsaikia.in",
+
+    color: "from-violet-700 to-purple-500",
   },
 ];
 

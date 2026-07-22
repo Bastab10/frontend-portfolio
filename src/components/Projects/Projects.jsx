@@ -1,86 +1,117 @@
-import "./Projects.css";
-import projects from "../../data/projects";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
-import { HiOutlineExternalLink } from "react-icons/hi";
+
+import projects from "../../data/projects";
+import ProjectCard from "./ProjectCard";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Projects() {
+  const sectionRef = useRef(null);
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const slider = sliderRef.current;
+
+const totalScroll = Math.max(
+  slider.scrollWidth - window.innerWidth,
+  0
+);
+   const animation = gsap.to(slider, {
+  x: -totalScroll,
+  ease: "none",
+  scrollTrigger: {
+    trigger: section,
+    start: "top top",
+    end: () => "+=" + totalScroll,
+    pin: true,
+    scrub: 1,
+    invalidateOnRefresh: true,
+    anticipatePin: 1,
+  },
+});
+
+ScrollTrigger.refresh();
+
+    return () => {
+      animation.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section className="projects" id="projects">
-      <div className="projects-container">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="relative min-h-screen overflow-hidden bg-[#F7F7F5] py-20 md:py-24 lg:py-32"
+    >
+      {/* Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)]" />
 
-        <motion.p
-          className="section-title"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          MY WORK
-        </motion.p>
-
-        <motion.h2
-          className="projects-heading"
+      {/* Mobile/Tablet: Vertical Layout */}
+      <div className="lg:hidden relative px-4 sm:px-6 md:px-8 max-w-4xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
+          className="mb-10 md:mb-12"
         >
-          Featured <span>Projects</span>
-        </motion.h2>
+          <p className="uppercase tracking-[0.45em] text-neutral-500 text-xs mb-3">
+            MY WORK
+          </p>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <motion.div
-              className="project-card"
-              key={project.id}
-              initial={{ opacity: 0, y: 70 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              viewport={{ once: true }}
-            >
-              <div className="project-number">
-                0{index + 1}
-              </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-light leading-[0.9] text-black">
+            Featured Projects
+          </h2>
 
-              <h3>{project.title}</h3>
+          <p className="mt-4 text-neutral-500 leading-7 text-sm sm:text-base">
+            A curated collection of full-stack applications focused on clean
+            architecture, modern UI, performance and real-world problem solving.
+          </p>
+        </motion.div>
 
-              <p>{project.description}</p>
-
-              <div className="tech-stack">
-                {project.tech.map((item, i) => (
-                  <span key={i}>{item}</span>
-                ))}
-              </div>
-
-              <div className="project-links">
-
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGithub />
-                  GitHub
-                </a>
-
-                <a
-                  href={project.demo && project.demo !== "#" ? (project.demo.startsWith('http') ? project.demo : `https://${project.demo}`) : "#"}
-                  target={project.demo && project.demo !== "#" ? "_blank" : "_self"}
-                  rel="noopener noreferrer"
-                  className="live-demo-btn"
-                  style={project.demo === "#" || !project.demo ? { opacity: 0.5, cursor: "not-allowed" } : {}}
-                >
-                  <HiOutlineExternalLink />
-                  Live Demo
-                </a>
-
-              </div>
-
-            </motion.div>
+        <div className="space-y-6 md:space-y-8">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
+      </div>
 
+      {/* Desktop: Horizontal Scroll */}
+      <div
+        ref={sliderRef}
+        className="hidden lg:flex h-full items-center gap-8 xl:gap-12 px-8 md:px-16 lg:px-20 w-max"
+      >
+        {/* Intro */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="w-[400px] xl:w-[520px] shrink-0"
+        >
+          <p className="uppercase tracking-[0.45em] text-neutral-500 text-xs mb-3">
+            MY WORK
+          </p>
+
+          <h2 className="text-6xl xl:text-8xl font-light leading-[0.9] text-black">
+            Featured Projects
+          </h2>
+
+          <p className="mt-4 text-neutral-500 leading-7 text-base xl:text-lg">
+            A curated collection of full-stack applications focused on clean
+            architecture, modern UI, performance and real-world problem solving.
+          </p>
+        </motion.div>
+
+        {/* Project Cards */}
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
     </section>
   );

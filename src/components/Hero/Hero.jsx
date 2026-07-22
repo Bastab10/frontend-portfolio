@@ -1,102 +1,74 @@
-import "./Hero.css";
 import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLinkedinIn,
-  FaEnvelope,
-  FaCode,
-  FaArrowRight,
-  FaDownload,
-  FaChevronDown,
-} from "react-icons/fa";
 
 function Hero() {
   return (
-    <section className="hero" id="home">
-      {/* Background */}
-      <div className="hero-bg">
-        <div className="noise"></div>
-        <div className="overlay"></div>
+    <section
+      id="home"
+      className="relative h-screen overflow-hidden bg-white pt-20 text-black"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src="/hero-image.png"
+          alt="Hero"
+          className="
+    w-[180px]
+    sm:w-[340px]
+    md:w-[420px]
+    lg:w-[500px]
+    xl:w-[560px]
+    grayscale
+    opacity-60
+    object-contain
+  "
+        />
       </div>
 
-      <div className="hero-container">
-        {/* Top Title */}
+      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-16 pt-16 sm:pt-20">
+        {/* Hero */}
         <motion.div
-          className="hero-top"
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="title-line"></div>
-          <span>FULL STACK</span>
-        </motion.div>
-
-        {/* Main Heading */}
-        <motion.div
-          className="hero-heading"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
+          className="flex flex-col justify-center leading-[0.82]"
         >
-          <h1 className="developer-text">Developer</h1>
+          <h1
+            className="font-extralight tracking-[-0.08em] text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem]"
+          >
+            Full Stack
+          </h1>
 
-          <h3 className="signature">Bastab Saikia</h3>
+          <h1
+            className="-mt-4 sm:-mt-6 font-extralight uppercase tracking-[-0.08em] text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[7rem] xl:text-[9rem]"
+          >
+            DEVELOPER
+          </h1>
         </motion.div>
-
-        {/* Description */}
-        <motion.p
-          className="hero-description"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          I BUILD <span>SCALABLE</span>
-          {" • "}
-          <span>MODERN</span>
-          {" • "}
-          <span>USER FRIENDLY</span> WEB APPLICATIONS
-        </motion.p>
-
-        {/* Buttons */}
+        
+        {/* Bottom Info */}
         <motion.div
-          className="hero-buttons"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="absolute bottom-8 sm:bottom-12 left-4 sm:left-6 md:left-8 lg:left-16 right-4 sm:right-6 md:right-8 lg:right-16 z-20"
         >
-          <a href="#projects" className="btn primary-btn">
-            View My Work
-            <FaArrowRight />
-          </a>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+            <div className="h-px w-12 sm:w-16 bg-black"></div>
 
-          <a href="/resume.pdf" download className="btn secondary-btn">
-            Download Resume
-            <FaDownload />
-          </a>
-        </motion.div>
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.35em] whitespace-nowrap font-extralight text-zinc-900">
+              BASTAB SAIKIA
+            </span>
 
-        {/* Social Icons */}
-        <motion.div
-          className="hero-socials"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
-            <FaGithub />
-          </a>
-
-          <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
-            <FaLinkedinIn />
-          </a>
-
-          <a href="mailto:your@email.com">
-            <FaEnvelope />
-          </a>
-
-          <a href="#projects">
-            <FaCode />
-          </a>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.18em] leading-5 max-w-[280px] sm:max-w-[400px] text-neutral-600">
+              Building scalable, efficient, and user-focused
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
+              web applications from idea to deployment.
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
+              Passionate about clean code and great design.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
