@@ -1,8 +1,8 @@
+// Responsive Projects.jsx
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-
 import projects from "../../data/projects";
 import ProjectCard from "./ProjectCard";
 
@@ -13,105 +13,60 @@ function Projects() {
   const sliderRef = useRef(null);
 
   useEffect(() => {
+    if (window.innerWidth < 1024) return;
+
     const section = sectionRef.current;
     const slider = sliderRef.current;
+    const totalScroll = Math.max(slider.scrollWidth - window.innerWidth, 0);
 
-const totalScroll = Math.max(
-  slider.scrollWidth - window.innerWidth,
-  0
-);
-   const animation = gsap.to(slider, {
-  x: -totalScroll,
-  ease: "none",
-  scrollTrigger: {
-    trigger: section,
-    start: "top top",
-    end: () => "+=" + totalScroll,
-    pin: true,
-    scrub: 1,
-    invalidateOnRefresh: true,
-    anticipatePin: 1,
-  },
-});
+    const animation = gsap.to(slider, {
+      x: -totalScroll,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => "+=" + totalScroll,
+        pin: true,
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
 
-ScrollTrigger.refresh();
-
+    ScrollTrigger.refresh();
     return () => {
       animation.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
 
   return (
-    <section
-      id="projects"
-      ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-[#F7F7F5] py-20 md:py-24 lg:py-32"
-    >
-      {/* Background */}
+    <section id="projects" ref={sectionRef} className="relative min-h-screen overflow-hidden bg-[#F7F7F5] py-20 md:py-24 lg:py-32">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)]" />
 
-      {/* Mobile/Tablet: Vertical Layout */}
-      <div className="lg:hidden relative px-4 sm:px-6 md:px-8 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="mb-10 md:mb-12"
-        >
-          <p className="uppercase tracking-[0.45em] text-neutral-500 text-xs mb-3">
-            MY WORK
-          </p>
-
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-light leading-[0.9] text-black">
-            Featured Projects
-          </h2>
-
-          <p className="mt-4 text-neutral-500 leading-7 text-sm sm:text-base">
-            A curated collection of full-stack applications focused on clean
-            architecture, modern UI, performance and real-world problem solving.
+      <div className="relative lg:hidden max-w-xl mx-auto px-5">
+        <motion.div initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="mb-10">
+          <p className="uppercase tracking-[0.45em] text-neutral-500 text-xs mb-3">MY WORK</p>
+          <h2 className="text-4xl sm:text-5xl font-light leading-tight">Featured Projects</h2>
+          <p className="mt-4 text-sm sm:text-base leading-7 text-neutral-500">
+            A curated collection of full-stack applications focused on clean architecture, modern UI and performance.
           </p>
         </motion.div>
 
-        <div className="space-y-6 md:space-y-8">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+        <div className="space-y-8">
+          {projects.map(p => <ProjectCard key={p.id} project={p} />)}
         </div>
       </div>
 
-      {/* Desktop: Horizontal Scroll */}
-      <div
-        ref={sliderRef}
-        className="hidden lg:flex h-full items-center gap-8 xl:gap-12 px-8 md:px-16 lg:px-20 w-max"
-      >
-        {/* Intro */}
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="w-[400px] xl:w-[520px] shrink-0"
-        >
-          <p className="uppercase tracking-[0.45em] text-neutral-500 text-xs mb-3">
-            MY WORK
+      <div ref={sliderRef} className="hidden lg:flex w-max items-center gap-10 px-20">
+        <div className="w-[450px] shrink-0">
+          <p className="uppercase tracking-[0.45em] text-neutral-500 text-xs mb-3">MY WORK</p>
+          <h2 className="text-7xl font-light leading-[0.9]">Featured Projects</h2>
+          <p className="mt-4 text-lg leading-7 text-neutral-500">
+            A curated collection of full-stack applications focused on clean architecture, modern UI and performance.
           </p>
+        </div>
 
-          <h2 className="text-6xl xl:text-8xl font-light leading-[0.9] text-black">
-            Featured Projects
-          </h2>
-
-          <p className="mt-4 text-neutral-500 leading-7 text-base xl:text-lg">
-            A curated collection of full-stack applications focused on clean
-            architecture, modern UI, performance and real-world problem solving.
-          </p>
-        </motion.div>
-
-        {/* Project Cards */}
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+        {projects.map(p => <ProjectCard key={p.id} project={p} />)}
       </div>
     </section>
   );

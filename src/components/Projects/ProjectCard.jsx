@@ -1,3 +1,4 @@
+// Responsive ProjectCard.jsx
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { HiArrowUpRight } from "react-icons/hi2";
@@ -5,131 +6,45 @@ import { HiArrowUpRight } from "react-icons/hi2";
 function ProjectCard({ project }) {
   const imageTop = project.id % 2 === 1;
 
+  const Image = (
+    <div className="mt-5 overflow-hidden rounded-xl">
+      <img
+        src={project.image}
+        alt={project.title}
+        className="h-[210px] sm:h-[240px] lg:h-[230px] w-full rounded-xl object-cover transition duration-500 hover:scale-105"
+      />
+    </div>
+  );
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-      className="relative w-full lg:w-[420px] h-auto lg:h-[620px] px-4 sm:px-6 py-4 sm:py-6 border-l border-neutral-200/50 flex flex-col bg-transparent"
+      initial={{opacity:0,y:50}}
+      whileInView={{opacity:1,y:0}}
+      viewport={{once:true}}
+      className="flex w-full lg:w-[420px] flex-col border-l border-neutral-200 px-4 sm:px-6 py-5 sm:py-6"
     >
-      {/* IMAGE TOP */}
-      {imageTop && (
-        <div className="mt-4 sm:mt-6 overflow-hidden rounded-lg">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="
-            w-full
-            h-[200px] sm:h-[230px]
-            object-cover
-            rounded-lg
-            transition
-            duration-500
-            hover:scale-105
-            "
-          />
-        </div>
-      )}
+      {imageTop && Image}
 
-      {/* Content */}
-      <div className={`${imageTop ? "mt-4 sm:mt-6" : "mt-4 sm:mt-6"}`}>
-        <div className="flex justify-between items-start">
-          <div>
-           <h2 className="text-3xl font-semibold text-black leading-tight">
-  {project.title}
-</h2>
+      <div className="mt-5">
+        <h2 className="text-2xl sm:text-3xl font-semibold leading-tight">{project.title}</h2>
+        <p className="mt-1 text-sm text-neutral-600">{project.category}</p>
 
-           <p className="text-sm text-neutral-600 mt-1">
-  {project.category}
-</p>
-          </div>
-        </div>
-
-       <h3 className="mt-4 sm:mt-6 text-lg sm:text-xl font-semibold font-extralight">
-  Tools & Features
-</h3>
-
-       <p className="mt-3 text-neutral-700 text-sm leading-7">
-  {project.tech.join(" • ")}
-</p>
-      <p className="mt-5 text-neutral-600 leading-7">
-  {project.description}
-</p>
+        <h3 className="mt-5 text-lg font-medium">Tools &amp; Features</h3>
+        <p className="mt-2 text-sm leading-7 text-neutral-700">{project.tech.join(" • ")}</p>
+        <p className="mt-4 text-sm sm:text-base leading-7 text-neutral-600">{project.description}</p>
       </div>
 
-      {/* IMAGE BOTTOM */}
-      {!imageTop && (
-        <div className="mt-4 sm:mt-6 overflow-hidden rounded-lg">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="
-            w-full
-            h-[200px] sm:h-[230px]
-            object-cover
-            rounded-lg
-            transition
-            duration-500
-            hover:scale-105
-            "
-          />
-        </div>
-      )}
+      {!imageTop && Image}
 
-      {/* Footer */}
-      <div className="flex justify-between items-center mt-4 sm:mt-6">
-       <a
-  href={project.github}
-  target="_blank"
-  rel="noreferrer"
-  className="flex items-center gap-2 text-black hover:text-violet-600 transition"
->
-  <FaGithub />
-  GitHub
-</a>
-<a
-  href={project.demo}
-  target="_blank"
-  rel="noreferrer"
-  className="
-    group
-    inline-flex
-    items-center
-    gap-2
-    rounded-full
-   
-    px-6
-    py-3
-    text-sm
-    font-medium
-    tracking-wide
-    text-white
-    transition-all
-    duration-300
-    
-  "
->
-  <span>Live Demo</span>
+      <div className="mt-6 flex items-center justify-between">
+        <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-violet-600">
+          <FaGithub /> GitHub
+        </a>
 
-  <span
-    className="
-      flex
-      h-8
-      w-8
-      items-center
-      justify-center
-      rounded-full
-      bg-white/10
-      transition-all
-      duration-300
-      group-hover:translate-x-1
-      group-hover:bg-white/20
-    "
-  >
-    <HiArrowUpRight className="text-lg" />
-  </span>
-</a>
+        <a href={project.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm text-white transition hover:bg-neutral-800">
+          Live Demo
+          <HiArrowUpRight />
+        </a>
       </div>
     </motion.div>
   );
