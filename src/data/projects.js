@@ -19,7 +19,7 @@ const projects = [
     image: "/projects/ai-shopping.jpg",
 
     github: "https://github.com/Bastab10",
-    demo: "#",
+    demo: "https://shopintel.bastabsaikia.in/",
 
     color: "from-violet-600 to-fuchsia-500",
   },
@@ -44,7 +44,7 @@ const projects = [
     image: "/projects/event.png",
 
     github: "https://github.com/Bastab10/UniHubEvents",
-    demo: "https://unihub.bastabsaikia.in",
+    demo: "https://uni.bastabsaikia.in/",
 
     color: "from-purple-600 to-indigo-500",
   },
