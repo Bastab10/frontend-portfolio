@@ -90,7 +90,7 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    subject: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -119,6 +119,9 @@ export default function ContactSection() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email";
     }
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+    }
 
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
@@ -140,14 +143,31 @@ export default function ContactSection() {
     setStatus(null);
 
     try {
-      // TODO: wire up to your actual send-message endpoint / API
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setStatus("success");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      setTimeout(() => setStatus(null), 5000);
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
     } catch (error) {
+      console.error(error);
       setStatus("error");
-      setTimeout(() => setStatus(null), 5000);
     } finally {
       setLoading(false);
     }
@@ -250,7 +270,6 @@ export default function ContactSection() {
                 name="email"
                 type="email"
                 label="Email"
-                icon={<FaEnvelope size={14} />}
                 required
                 placeholder=""
                 value={formData.email}
@@ -259,18 +278,15 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Phone Number (optional) */}
             <IconField
-              id="phone"
-              name="phone"
-              type="tel"
-              label="Phone Number"
-              // icon={<FaPhone size={14} />}
-              placeholder=""
-              value={formData.phone}
+              id="subject"
+              name="subject"
+              label="Subject"
+              required
+              value={formData.subject}
               onChange={handleChange}
+              error={errors.subject}
             />
-
             {/* Message */}
             <div>
               <div className="flex items-center justify-between mb-2">
