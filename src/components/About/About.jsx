@@ -9,7 +9,7 @@ function About() {
     >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:70px_70px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),#00000008_1px,transparent_1px)] bg-[size:70px_70px]" />
 
         <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/5 blur-[120px] sm:h-[350px] sm:w-[350px] md:h-[420px] md:w-[420px] lg:h-[520px] lg:w-[520px]" />
       </div>

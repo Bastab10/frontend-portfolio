@@ -44,7 +44,7 @@ export default function TechStack() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section id="techstack" aria-labelledby="techstack-heading" className="relative w-full bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)] px-4 sm:px-6 md:px-8 lg:px-16 pt-12 md:pt-16 pb-20 md:pb-28">
+    <section id="techstack" aria-labelledby="techstack-heading" className="relative w-full bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)],#f2f2f2,transparent_45%)] px-4 sm:px-6 md:px-8 lg:px-16 pt-12 md:pt-16 pb-20 md:pb-28">
       <div className="mx-auto w-full max-w-7xl">
         {/* Heading */}
         <div className="mb-16 md:mb-20">
