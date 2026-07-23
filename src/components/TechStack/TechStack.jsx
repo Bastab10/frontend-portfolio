@@ -1,132 +1,123 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaGitAlt,
+  FaChevronDown,
+  FaChevronUp,
+  FaCode,
+  FaServer,
+  FaDatabase,
+  FaCloud,
+  FaTools,
 } from "react-icons/fa";
-import {
-  SiExpress,
-  SiMongodb,
-  SiMysql,
-  SiPostgresql,
-  SiSupabase,
-  SiTailwindcss,
-  SiGithub,
-  SiPostman,
-} from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
+
 import skills from "../../data/skills";
 
-const iconMap = {
-  React: FaReact,
-  JavaScript: FaJs,
-  HTML5: FaHtml5,
-  CSS3: FaCss3Alt,
-  TailwindCSS: SiTailwindcss,
-  Redux: FaReact,
-  "Node.js": FaNodeJs,
-  Express: SiExpress,
-  "REST APIs": FaNodeJs,
-  Authentication: FaNodeJs,
-  MongoDB: SiMongodb,
-  MySQL: SiMysql,
-  PostgreSQL: SiPostgresql,
-  Supabase: SiSupabase,
-  Git: FaGitAlt,
-  GitHub: SiGithub,
-  "VS Code": VscVscode,
-  Postman: SiPostman,
-};
-
-function SkillCard({ skill, Icon, index }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45, delay: index * 0.05 }}
-      whileHover={{ y: -8, scale: 1.05 }}
-      className="group flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-xl sm:rounded-2xl border border-black/10 bg-white shadow-md transition-all duration-300 hover:bg-black"
-    >
-      <div className="flex flex-col items-center">
-        <Icon className="text-[18px] sm:text-[24px] text-black group-hover:text-white transition-colors" />
-        <span className="mt-1 sm:mt-2 text-[9px] sm:text-xs text-neutral-700 group-hover:text-white text-center">
-          {skill.name}
-        </span>
-      </div>
-    </motion.div>
-  );
-}
+const sections = [
+  {
+    title: "Frontend Development",
+    icon: FaCode,
+    items: skills.frontend,
+  },
+  {
+    title: "Backend Development",
+    icon: FaServer,
+    items: skills.backend,
+  },
+  {
+    title: "Database",
+    icon: FaDatabase,
+    items: skills.database,
+  },
+  {
+    title: "Deployment",
+    icon: FaCloud,
+    items: skills.deployment || [],
+  },
+  {
+    title: "Tools & Platforms",
+    icon: FaTools,
+    items: skills.tools,
+  },
+];
 
 export default function TechStack() {
-  const allSkills = [
-    ...skills.frontend,
-    ...skills.backend,
-    ...skills.database,
-    ...skills.tools,
-  ];
-
-  const rows = [
-    allSkills.slice(0, 6),
-    allSkills.slice(6, 10),
-    allSkills.slice(10, 14),
-    allSkills.slice(14),
-  ];
+  const [open, setOpen] = useState(0);
 
   return (
-    <section
-      id="techstack"
-      className="relative min-h-screen overflow-hidden bg-white flex justify-center items-start py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8"
-    >
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:80px_80px]" />
-      </div>
+    <section id="techstack" aria-labelledby="techstack-heading" className="relative w-full bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)] px-4 sm:px-6 md:px-8 lg:px-16 pt-12 md:pt-16 pb-20 md:pb-28">
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Heading */}
+        <div className="mb-16 md:mb-20">
+          <div className="flex items-center gap-4 md:gap-5">
+            <div className="h-px w-10 bg-neutral-900"></div>
 
-      <div className="w-full max-w-7xl flex flex-col items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 md:mb-12"
-        >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[100px] leading-none tracking-tight">
-            <span className="font-extralight">TECH STACK</span>
+            <p className="text-base md:text-lg font-medium tracking-tight text-neutral-600">
+              What I Am Good At
+            </p>
+          </div>
+
+          <h2 id="techstack-heading" className="mt-5 max-w-4xl text-5xl md:text-6xl lg:text-7xl xl:text-[80px] leading-[0.92] tracking-[-0.05em] text-black">
+            Skills & Interests.
           </h2>
-        </motion.div>
+        </div>
 
-        <div className="w-full flex flex-col items-center gap-5 sm:gap-7 overflow-x-hidden">
+        {/* Accordion */}
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-6 md:gap-7">
-            {rows[0].map((skill,i)=>{
-              const Icon=iconMap[skill.name]||FaReact;
-              return <SkillCard key={skill.name} skill={skill} Icon={Icon} index={i}/>;
-            })}
-          </div>
+        <div className="w-full">
+          {sections.map((section, index) => {
+            const Icon = section.icon;
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 md:gap-7">
-            {rows[1].map((skill,i)=>{
-              const Icon=iconMap[skill.name]||FaReact;
-              return <SkillCard key={skill.name} skill={skill} Icon={Icon} index={i+6}/>;
-            })}
-          </div>
+            return (
+              <div key={section.title} className="border-b border-neutral-200">
+                <button
+                  onClick={() => setOpen(open === index ? null : index)}
+                  className="flex h-[72px] md:h-[80px] w-full items-center justify-between px-0"
+                  aria-expanded={open === index}
+                  aria-controls={`section-${index}`}
+                >
+                  {/* LEFT */}
+                  <div className="flex items-center gap-4 md:gap-5">
+                    <div className="flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-lg bg-black text-white">
+                      <Icon className="text-base" aria-hidden="true" />
+                    </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 md:gap-7">
-            {rows[2].map((skill,i)=>{
-              const Icon=iconMap[skill.name]||FaReact;
-              return <SkillCard key={skill.name} skill={skill} Icon={Icon} index={i+10}/>;
-            })}
-          </div>
+                    <h3 className="text-xl md:text-[22px] lg:text-[24px] font-semibold tracking-[-0.02em] text-black">
+                      {section.title}
+                    </h3>
+                  </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-7">
-            {rows[3].map((skill,i)=>{
-              const Icon=iconMap[skill.name]||FaReact;
-              return <SkillCard key={skill.name} skill={skill} Icon={Icon} index={i+14}/>;
-            })}
-          </div>
-
+                  {/* RIGHT */}
+                  <div className="flex items-center gap-3 text-sm md:text-[15px] text-neutral-900 font-extralight">
+                    <span className="hidden sm:inline">Expand</span>
+                    {open === index ? <FaChevronUp aria-hidden="true" /> : <FaChevronDown aria-hidden="true" />}
+                  </div>
+                </button>{" "}
+                {open === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="pb-8 md:pb-10"
+                    id={`section-${index}`}
+                  >
+                    <div className="pl-14 md:pl-16 lg:pl-[64px]">
+                      <ul className="space-y-4 md:space-y-5">
+                        {section.items.map((skill) => (
+                          <li
+                            key={skill.name}
+                            className="flex items-center justify-between max-w-full sm:max-w-md text-lg text-neutral-700"
+                          >
+                            <span>{skill.name}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

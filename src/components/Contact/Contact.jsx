@@ -159,7 +159,7 @@ export default function ContactSection() {
   const isAtLimit = messageLength >= maxLength;
 
   return (
-    <section className="min-h-screen bg-white px-8 lg:px-16 xl:px-24 py-24 lg:py-32 flex items-center">
+    <section className="min-h-screen bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)] px-8 lg:px-16 xl:px-24 py-24 lg:py-32 flex items-center">
       <div className="mx-auto w-full max-w-[1600px] pt-20 lg:pt-24">
         {" "}
         {/* Header Block */}
