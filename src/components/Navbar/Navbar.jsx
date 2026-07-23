@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaBars, FaTimes, FaGithub } from "react-icons/fa";
 import { Link } from "react-scroll";
@@ -6,6 +6,7 @@ import { Link } from "react-scroll";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +35,35 @@ function Navbar() {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
+  // Measure the navbar's real rendered height and expose it as a CSS
+  // variable so any section (e.g. Hero) can pad itself correctly and
+  // never overlap, regardless of breakpoint or future height changes.
+  useEffect(() => {
+    const setNavHeightVar = () => {
+      if (navRef.current) {
+        const height = navRef.current.offsetHeight;
+        document.documentElement.style.setProperty(
+          "--navbar-height",
+          `${height}px`
+        );
+      }
+    };
+
+    setNavHeightVar();
+
+    const resizeObserver = new ResizeObserver(setNavHeightVar);
+    if (navRef.current) resizeObserver.observe(navRef.current);
+
+    window.addEventListener("resize", setNavHeightVar);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", setNavHeightVar);
+    };
+  }, []);
+
   return (
     <nav
+      ref={navRef}
       className={`fixed inset-x-0 top-0 z-[9999] transition-all duration-300 ${
         navbar
           ? "bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-sm"
@@ -105,7 +133,8 @@ function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="fixed left-0 top-16 md:top-20 w-full border-t border-neutral-200 bg-white shadow-xl lg:hidden z-[9998]"
+          className="fixed left-0 w-full border-t border-neutral-200 bg-white shadow-xl lg:hidden z-[9998]"
+          style={{ top: "var(--navbar-height, 4rem)" }}
         >
           <div className="flex flex-col gap-6 px-6 py-8">
             <Link

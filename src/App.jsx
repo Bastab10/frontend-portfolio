@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
 import TechStack from "./components/TechStack/TechStack";
-// import Projects from "./components/Projects/Projects";
+import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Hero />
       <About />
       <TechStack />
-      {/* <Projects /> */}
+      <Projects />
       <Contact />
     </>
   );

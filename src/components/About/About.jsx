@@ -5,7 +5,7 @@ function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_85%)] px-4 sm:px-6 md:px-8 lg:px-16 py-20 md:py-24 text-black"
+      className="relative flex items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_85%)] px-4 pt-40 pb-16 sm:min-h-screen sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-16 text-black"
     >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
