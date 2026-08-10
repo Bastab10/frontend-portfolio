@@ -72,11 +72,6 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* <p className="max-w-md text-[10px] uppercase leading-6 tracking-[0.15em] text-neutral-600 sm:text-[11px] sm:leading-7 sm:tracking-[0.2em]">
-            Building scalable, efficient and user-focused web applications
-            from idea to deployment with clean architecture and meaningful
-            user experiences.
-          </p> */}
         </motion.div>
       </div>
     </section>

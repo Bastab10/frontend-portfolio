@@ -96,7 +96,7 @@ function Navbar() {
 
           <li>
             <a
-              href="/resume.pdf"
+              href="public/BastabSaikia_resume.pdf"
               target="_blank"
               rel="noreferrer"
               className="transition hover:text-black focus:outline-none focus:ring-2 focus:ring-black/20 rounded-lg px-2 py-1"
