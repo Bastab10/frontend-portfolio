@@ -65,18 +65,18 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end lg:justify-between"
         >
-          <div className="flex items-center gap-4 sm:gap-5">
+          <div className="flex items-center gap-4 sm:gap-5 ">
             <div className="h-px w-10 bg-black sm:w-16" />
             <span className="text-[10px] uppercase tracking-[0.35em] sm:text-[11px] sm:tracking-[0.45em]">
               BASTAB SAIKIA
             </span>
           </div>
 
-          <p className="max-w-md text-[10px] uppercase leading-6 tracking-[0.15em] text-neutral-600 sm:text-[11px] sm:leading-7 sm:tracking-[0.2em]">
+          {/* <p className="max-w-md text-[10px] uppercase leading-6 tracking-[0.15em] text-neutral-600 sm:text-[11px] sm:leading-7 sm:tracking-[0.2em]">
             Building scalable, efficient and user-focused web applications
             from idea to deployment with clean architecture and meaningful
             user experiences.
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </section>

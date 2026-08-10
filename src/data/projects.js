@@ -99,29 +99,29 @@ const projects = [
     color: "from-orange-500 to-pink-500",
   },
 
-  {
-    id: 5,
-    number: "05",
-    title: "Portfolio Website",
-    category: "Frontend",
+  // {
+  //   id: 5,
+  //   number: "05",
+  //   title: "Portfolio Website",
+  //   category: "Frontend",
 
-    description:
-      "Modern portfolio built with React, Tailwind CSS, Framer Motion, and GSAP featuring premium animations and responsive design.",
+  //   description:
+  //     "Modern portfolio built with React, Tailwind CSS, Framer Motion, and GSAP featuring premium animations and responsive design.",
 
-    tech: [
-      "React",
-      "Tailwind CSS",
-      "Framer Motion",
-      "GSAP",
-    ],
+  //   tech: [
+  //     "React",
+  //     "Tailwind CSS",
+  //     "Framer Motion",
+  //     "GSAP",
+  //   ],
 
-    image: "/projects/portfolio.png",
+  //   image: "/projects/portfolio.png",
 
-    github: "https://github.com/Bastab10",
-    demo: "https://bastabsaikia.in",
+  //   github: "https://github.com/Bastab10",
+  //   demo: "https://bastabsaikia.in",
 
-    color: "from-violet-700 to-purple-500",
-  },
+  //   color: "from-violet-700 to-purple-500",
+  // },
 ];
 
 export default projects;
