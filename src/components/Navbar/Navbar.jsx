@@ -35,9 +35,7 @@ function Navbar() {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  // Measure the navbar's real rendered height and expose it as a CSS
-  // variable so any section (e.g. Hero) can pad itself correctly and
-  // never overlap, regardless of breakpoint or future height changes.
+
   useEffect(() => {
     const setNavHeightVar = () => {
       if (navRef.current) {
