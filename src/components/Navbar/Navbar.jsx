@@ -8,38 +8,49 @@ function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const navRef = useRef(null);
 
+  // Navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
       setNavbar(window.scrollY > 80);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
+
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [menuOpen]);
 
+  // Close mobile menu on desktop resize
   useEffect(() => {
-    const resize = () => {
+    const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setMenuOpen(false);
       }
     };
 
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-
+  // Set navbar height CSS variable
   useEffect(() => {
     const setNavHeightVar = () => {
       if (navRef.current) {
         const height = navRef.current.offsetHeight;
+
         document.documentElement.style.setProperty(
           "--navbar-height",
           `${height}px`
@@ -50,9 +61,13 @@ function Navbar() {
     setNavHeightVar();
 
     const resizeObserver = new ResizeObserver(setNavHeightVar);
-    if (navRef.current) resizeObserver.observe(navRef.current);
+
+    if (navRef.current) {
+      resizeObserver.observe(navRef.current);
+    }
 
     window.addEventListener("resize", setNavHeightVar);
+
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", setNavHeightVar);
@@ -68,7 +83,9 @@ function Navbar() {
           : "bg-white"
       }`}
     >
+      {/* Desktop / Main Navbar */}
       <div className="mx-auto flex h-16 md:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 md:px-8">
+        {/* Logo / Name */}
         <div className="flex items-center gap-2 sm:gap-3">
           <h1 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-tight text-black">
             Bastab Saikia
@@ -79,7 +96,9 @@ function Navbar() {
           </span>
         </div>
 
+        {/* Desktop Menu */}
         <ul className="hidden lg:flex items-center gap-10 text-[15px] font-medium text-neutral-700">
+          {/* Work Samples */}
           <li>
             <Link
               to="projects"
@@ -92,39 +111,45 @@ function Navbar() {
             </Link>
           </li>
 
+          {/* Resume */}
           <li>
             <a
-              href="public/BastabSaikia_resume.pdf"
+              href="/BastabSaikia_resume.pdf"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="transition hover:text-black focus:outline-none focus:ring-2 focus:ring-black/20 rounded-lg px-2 py-1"
             >
               Explore Resume
             </a>
           </li>
 
+          {/* GitHub */}
           <li>
             <a
               href="https://github.com/Bastab10"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 transition hover:text-black focus:outline-none focus:ring-2 focus:ring-black/20 rounded-lg px-2 py-1"
             >
-              See GitHub <FaGithub aria-hidden="true" />
+              See GitHub
+              <FaGithub aria-hidden="true" />
             </a>
           </li>
         </ul>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="lg:hidden rounded-full p-2.5 text-2xl text-black transition hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-black/20"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
+          type="button"
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {menuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -135,6 +160,7 @@ function Navbar() {
           style={{ top: "var(--navbar-height, 4rem)" }}
         >
           <div className="flex flex-col gap-6 px-6 py-8">
+            {/* Work Samples */}
             <Link
               to="projects"
               smooth
@@ -146,20 +172,22 @@ function Navbar() {
               Work Samples
             </Link>
 
+            {/* Resume */}
             <a
               href="/BastabSaikia_resume.pdf"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
               className="text-lg font-medium text-neutral-800 transition hover:text-black py-2 focus:outline-none focus:ring-2 focus:ring-black/20 rounded-lg px-2"
             >
               Explore Resume
             </a>
 
+            {/* GitHub */}
             <a
               href="https://github.com/Bastab10"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-3 text-lg font-medium text-neutral-800 transition hover:text-black py-2 focus:outline-none focus:ring-2 focus:ring-black/20 rounded-lg px-2"
             >
