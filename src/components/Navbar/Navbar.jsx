@@ -147,7 +147,7 @@ function Navbar() {
             </Link>
 
             <a
-              href="/resume.pdf"
+              href="/BastabSaikia_resume.pdf"
               target="_blank"
               rel="noreferrer"
               onClick={() => setMenuOpen(false)}
