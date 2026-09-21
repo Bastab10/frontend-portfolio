@@ -44,7 +44,7 @@ const projects = [
     image: "/projects/event.png",
 
     github: "https://github.com/Bastab10/UniHubEvents",
-    demo: "https://uni.bastabsaikia.in/",
+    demo: "https://uni.bastabsaikia.in",
 
     color: "from-purple-600 to-indigo-500",
   },
