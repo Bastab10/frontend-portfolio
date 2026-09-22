@@ -49,29 +49,29 @@ const projects = [
     color: "from-purple-600 to-indigo-500",
   },
 
-  {
-    id: 3,
-    number: "03",
-    title: "Patient History System",
-    category: "Healthcare",
+  // {
+  //   id: 3,
+  //   number: "03",
+  //   title: "Patient History System",
+  //   category: "Healthcare",
 
-    description:
-      "Secure healthcare platform to manage patient records, prescriptions, appointments, and complete medical history.",
+  //   description:
+  //     "Secure healthcare platform to manage patient records, prescriptions, appointments, and complete medical history.",
 
-    tech: [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-    ],
+  //   tech: [
+  //     "React",
+  //     "Node.js",
+  //     "Express",
+  //     "MongoDB",
+  //   ],
 
-    image: "/projects/patient.png",
+  //   image: "/projects/patient.png",
 
-    github: "#",
-    demo: "#",
+  //   github: "#",
+  //   demo: "#",
 
-    color: "from-cyan-600 to-blue-500",
-  },
+  //   color: "from-cyan-600 to-blue-500",
+  // },
 
   {
     id: 4,
@@ -94,7 +94,7 @@ const projects = [
     image: "/projects/wanderlust.png",
 
     github: "https://github.com/Bastab10/StayVista",
-    demo: "#",
+    demo: "https://stay.bastabsaikia.in",
 
     color: "from-orange-500 to-pink-500",
   },
