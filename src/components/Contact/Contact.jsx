@@ -39,8 +39,6 @@ const contacts = [
   },
 ];
 
-// Reusable underline-style input with a leading icon, matching the
-// reference layout while keeping the original palette/typography.
 function IconField({
   id,
   label,
@@ -94,7 +92,7 @@ export default function ContactSection() {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [status, setStatus] = useState(null);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -181,8 +179,6 @@ export default function ContactSection() {
   return (
     <section className="min-h-screen bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)] px-8 lg:px-16 xl:px-24 py-24 lg:py-32 flex items-center">
       <div className="mx-auto w-full max-w-[1600px] pt-20 lg:pt-24">
-        {" "}
-        {/* Header Block */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,24 +197,13 @@ export default function ContactSection() {
             Something Great.
           </h2>
         </motion.div>
-        {/* Content Grid */}
         <div className="grid lg:grid-cols-[1fr_1.35fr] gap-19 items-start">
-          {/* Left: intro + contact list */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* <h3 className="text-2xl font-semibold text-[#111111] mb-4">
-              Say Hello.
-            </h3>
-            <p className="text-[#6B7280] leading-relaxed mb-10">
-              Got an idea, a project, or just want to chat about web dev &amp;
-              design? Fill the form and I'll get back to you within a day or
-              two.
-            </p> */}
-
             <ul className="space-y-9">
               {contacts.map((c) => (
                 <li key={c.title}>
@@ -243,7 +228,6 @@ export default function ContactSection() {
             </ul>
           </motion.div>
 
-          {/* Right: Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 40 }}
@@ -252,13 +236,11 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="space-y-10"
           >
-            {/* Name + Email side by side */}
             <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
               <IconField
                 id="name"
                 name="name"
                 label="Name"
-                // icon={<FaUser size={14} />}
                 required
                 placeholder=""
                 value={formData.name}
@@ -287,7 +269,6 @@ export default function ContactSection() {
               onChange={handleChange}
               error={errors.subject}
             />
-            {/* Message */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="sr-only">Message</span>
@@ -300,7 +281,7 @@ export default function ContactSection() {
                         : "text-[#9CA3AF]"
                   }`}
                 >
-                  {/* {messageLength}/{maxLength} */}
+                  {messageLength}/{maxLength}
                 </span>
               </div>
               <IconField
@@ -309,7 +290,6 @@ export default function ContactSection() {
                 as="textarea"
                 label="Message"
                 rows={3}
-                // icon={<FaRegCommentDots size={14} className="mt-1" />}
                 required
                 maxLength={maxLength}
                 placeholder=""
@@ -319,7 +299,6 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Status Messages */}
             {status === "success" && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -344,7 +323,6 @@ export default function ContactSection() {
               </motion.div>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}

@@ -7,7 +7,6 @@ function About() {
       aria-labelledby="about-heading"
       className="relative flex items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_85%)] px-4 pt-40 pb-16 sm:min-h-screen sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-16 text-black"
     >
-      {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),#00000008_1px,transparent_1px)] bg-[size:70px_70px]" />
 

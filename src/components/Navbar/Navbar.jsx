@@ -8,7 +8,6 @@ function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const navRef = useRef(null);
 
-  // Navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
       setNavbar(window.scrollY > 80);
@@ -21,7 +20,6 @@ function Navbar() {
     };
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
 
@@ -30,7 +28,6 @@ function Navbar() {
     };
   }, [menuOpen]);
 
-  // Close mobile menu on desktop resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
@@ -45,7 +42,6 @@ function Navbar() {
     };
   }, []);
 
-  // Set navbar height CSS variable
   useEffect(() => {
     const setNavHeightVar = () => {
       if (navRef.current) {
@@ -83,9 +79,7 @@ function Navbar() {
           : "bg-white"
       }`}
     >
-      {/* Desktop / Main Navbar */}
       <div className="mx-auto flex h-16 md:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 md:px-8">
-        {/* Logo / Name */}
         <div className="flex items-center gap-2 sm:gap-3">
           <h1 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-tight text-black">
             Bastab Saikia
@@ -96,9 +90,7 @@ function Navbar() {
           </span>
         </div>
 
-        {/* Desktop Menu */}
         <ul className="hidden lg:flex items-center gap-10 text-[15px] font-medium text-neutral-700">
-          {/* Work Samples */}
           <li>
             <Link
               to="projects"
@@ -111,7 +103,6 @@ function Navbar() {
             </Link>
           </li>
 
-          {/* Resume */}
           <li>
             <a
               href="/BastabSaikia_resume.pdf"
@@ -123,7 +114,6 @@ function Navbar() {
             </a>
           </li>
 
-          {/* GitHub */}
           <li>
             <a
               href="https://github.com/Bastab10"
@@ -137,7 +127,6 @@ function Navbar() {
           </li>
         </ul>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="lg:hidden rounded-full p-2.5 text-2xl text-black transition hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-black/20"
@@ -149,7 +138,6 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -160,7 +148,6 @@ function Navbar() {
           style={{ top: "var(--navbar-height, 4rem)" }}
         >
           <div className="flex flex-col gap-6 px-6 py-8">
-            {/* Work Samples */}
             <Link
               to="projects"
               smooth
@@ -172,7 +159,6 @@ function Navbar() {
               Work Samples
             </Link>
 
-            {/* Resume */}
             <a
               href="/BastabSaikia_resume.pdf"
               target="_blank"
@@ -183,7 +169,6 @@ function Navbar() {
               Explore Resume
             </a>
 
-            {/* GitHub */}
             <a
               href="https://github.com/Bastab10"
               target="_blank"

@@ -6,7 +6,6 @@ export default function Hero() {
       id="home"
       className="relative w-full overflow-hidden bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)] text-black sm:min-h-screen sm:min-h-[100svh]"
     >
-      {/* Ambient glow blobs - hidden on small screens to avoid overflow/perf issues */}
       <div className="absolute -left-40 top-20 hidden h-[32rem] w-[32rem] rounded-full bg-neutral-200 blur-[180px] opacity-70 sm:block" />
       <div className="absolute -right-40 bottom-0 hidden h-[32rem] w-[32rem] rounded-full bg-neutral-300 blur-[180px] opacity-50 sm:block" />
 
@@ -14,8 +13,6 @@ export default function Hero() {
         className="relative z-10 mx-auto flex w-full max-w-[1700px] flex-col gap-10 px-5 pb-10 sm:min-h-screen sm:min-h-[100svh] sm:justify-between sm:gap-0 sm:px-8 sm:pb-8 lg:px-14"
         style={{ paddingTop: "calc(var(--navbar-height, 4rem) + 1rem)" }}
       >
-
-        {/* Top bar */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-[9px] uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px] sm:tracking-[0.4em]">
@@ -36,7 +33,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,7 +54,6 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Bottom bar */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

@@ -46,7 +46,6 @@ export default function TechStack() {
   return (
     <section id="techstack" aria-labelledby="techstack-heading" className="relative w-full bg-[radial-gradient(circle_at_top_right,#f2f2f2,transparent_45%)],#f2f2f2,transparent_45%)] px-4 sm:px-6 md:px-8 lg:px-16 pt-12 md:pt-16 pb-20 md:pb-28">
       <div className="mx-auto w-full max-w-7xl">
-        {/* Heading */}
         <div className="mb-16 md:mb-20">
           <div className="flex items-center gap-4 md:gap-5">
             <div className="h-px w-10 bg-neutral-900"></div>
@@ -61,7 +60,6 @@ export default function TechStack() {
           </h2>
         </div>
 
-        {/* Accordion */}
 
         <div className="w-full">
           {sections.map((section, index) => {
@@ -75,7 +73,6 @@ export default function TechStack() {
                   aria-expanded={open === index}
                   aria-controls={`section-${index}`}
                 >
-                  {/* LEFT */}
                   <div className="flex items-center gap-4 md:gap-5">
                     <div className="flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-lg bg-black text-white">
                       <Icon className="text-base" aria-hidden="true" />
@@ -86,7 +83,6 @@ export default function TechStack() {
                     </h3>
                   </div>
 
-                  {/* RIGHT */}
                   <div className="flex items-center gap-3 text-sm md:text-[15px] text-neutral-900 font-extralight">
                     <span className="hidden sm:inline">Expand</span>
                     {open === index ? <FaChevronUp aria-hidden="true" /> : <FaChevronDown aria-hidden="true" />}

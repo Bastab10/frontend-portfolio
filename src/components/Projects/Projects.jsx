@@ -1,4 +1,3 @@
-// Responsive Projects.jsx
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -50,11 +49,9 @@ function Projects() {
 
     setup();
 
-    // Images can finish loading after mount and change slider.scrollWidth,
-    // so recalculate once everything (including images) has fully loaded.
+    
     window.addEventListener("load", setup);
 
-    // Recalculate on resize too, since card widths / gaps can shift.
     const handleResize = () => {
       if (window.innerWidth < 1024) return;
       setup();
