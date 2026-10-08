@@ -61,6 +61,31 @@ const projects = [
 
     color: "from-orange-500 to-pink-500",
   },
+
+  {
+    id: 6,
+    number: "06",
+    title: "Sneaker Store",
+    category: "E-Commerce • Full Stack",
+    description:
+      "A modern sneaker e-commerce platform with dynamic product pages, size selection, cart management, localStorage persistence, and a complete checkout flow.",
+
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Context API",
+      "localStorage",
+    ],
+
+    image: "/projects/sneaker-store.png",
+
+    github: "https://github.com/Bastab10",
+    demo: "https://sneaker-ui-pink.vercel.app/",
+
+    color: "from-black to-gray-700",
+  },
 ];
 
 export default projects;
