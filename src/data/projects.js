@@ -38,7 +38,7 @@ const projects = [
     image: "/projects/event.png",
 
     github: "https://github.com/Bastab10/UniHubEvents",
-    demo: "https://uni.bastabsaikia.in",
+    demo: "https://l.utpx.in/UniHUB",
 
     color: "from-purple-600 to-indigo-500",
   },
@@ -57,7 +57,7 @@ const projects = [
     image: "/projects/wanderlust.png",
 
     github: "https://github.com/Bastab10/StayVista",
-    demo: "https://stay.bastabsaikia.in",
+    demo: "https://l.utpx.in/StayvistaWeb",
 
     color: "from-orange-500 to-pink-500",
   },
