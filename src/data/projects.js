@@ -1,11 +1,37 @@
+
 const projects = [
   {
     id: 1,
     number: "01",
+    title: "SAHAJ –  Services Platform",
+    category: "Full Stack • Business Website",
+    description:
+      "A service-booking platform connecting customers with home and local service providers across Tezpur and Assam, featuring service listings, detailed service pages, and contact options.",
+
+    tech: [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Tailwind CSS",
+    ],
+
+    image: "/projects/sohoj.png",
+
+    github: "https://github.com/Bastab10",
+    demo: "https://www.sohojservices.in/",
+
+    color: "from-pink-600 to-purple-500",
+  },
+
+  {
+    id: 2,
+    number: "02",
     title: "AI Shopping System",
     category: "AI • Full Stack",
     description:
-      "An AI-powered shopping assistant that compares products, recommends the best options, and helps users make smart buying decisions.",
+      "An AI-powered shopping assistant that compares products, recommends suitable options, and helps users make smarter buying decisions.",
 
     tech: [
       "React",
@@ -18,22 +44,27 @@ const projects = [
 
     image: "/projects/ai-shopping.jpg",
 
-    github: "https://github.com/Bastab10",
+    github: "https://github.com/Bastab10/AI-Multi-Agent-Shopping-System",
     demo: "https://shopintel.bastabsaikia.in/",
 
     color: "from-violet-600 to-fuchsia-500",
   },
 
   {
-    id: 2,
-    number: "02",
+    id: 3,
+    number: "03",
     title: "Event Management System",
     category: "Full Stack Web",
-
     description:
-      "A university event management platform with role-based authentication, registrations, admin dashboard, coordinator panel, and event management.",
+      "A university event management platform with role-based authentication, event registrations, admin dashboard, coordinator panel, and registration tracking.",
 
-    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    tech: [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "EJS",
+      "Bootstrap",
+    ],
 
     image: "/projects/event.png",
 
@@ -48,11 +79,17 @@ const projects = [
     number: "04",
     title: "WanderLust",
     category: "Travel Platform",
-
     description:
-      "Airbnb-inspired travel listing platform with authentication, reviews, image uploads, maps, and cloud storage.",
+      "An Airbnb-inspired travel listing platform featuring authentication, reviews, image uploads, maps, and cloud storage.",
 
-    tech: ["Node.js", "Express", "MongoDB", "EJS", "Bootstrap", "Cloudinary"],
+    tech: [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "EJS",
+      "Bootstrap",
+      "Cloudinary",
+    ],
 
     image: "/projects/wanderlust.png",
 
@@ -63,12 +100,12 @@ const projects = [
   },
 
   {
-    id: 6,
-    number: "06",
+    id: 5,
+    number: "05",
     title: "Sneaker Store",
     category: "E-Commerce • Full Stack",
     description:
-      "A modern sneaker e-commerce platform with dynamic product pages, size selection, cart management, localStorage persistence, and a complete checkout flow.",
+      "A modern sneaker e-commerce interface with dynamic product pages, size selection, cart management, persistent cart data, and checkout flow.",
 
     tech: [
       "Next.js",
