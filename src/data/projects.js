@@ -3,10 +3,10 @@ const projects = [
   {
     id: 1,
     number: "01",
-    title: "SAHAJ –  Services Platform",
+    title: "SOHOJ ",
     category: "Full Stack • Business Website",
     description:
-      "A service-booking platform connecting customers with home and local service providers across Tezpur and Assam, featuring service listings, detailed service pages, and contact options.",
+      "A service-booking platform connecting customers with home and local service.",
 
     tech: [
       "Next.js",
